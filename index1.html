@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hacker Portfolio — Sarvarbek Madiyarov (Red Team / Bug Hunter)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* === Base Styling === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Fira Code', monospace;
+    }
+
+    body {
+      background: #000;
+      color: #0f0;
+      overflow-x: hidden;
+    }
+
+    #matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.3;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 2;
+      padding: 40px 15px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1.neon-title {
+      font-size: 38px;
+      color: #0f0;
+      text-shadow: 0 0 15px #0f0;
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      border: 1px solid rgba(0, 255, 102, 0.4);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 15px 0;
+      background: rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+    }
+
+    .badge h4 {
+      color: #0f0;
+      text-shadow: 0 0 10px #0f0;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .badge p {
+      display: block;
+      margin: 6px 0;
+      line-height: 1.5;
+      word-break: break-word;
+      white-space: normal;
+      color: #baffba;
+    }
+
+    a {
+      color: #00ff88;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #fff;
+      text-shadow: 0 0 5px #00ffcc;
+    }
+
+    footer {
+      margin-top: 20px;
+      color: rgba(0, 255, 102, 0.45);
+      text-align: center;
+      font-size: 14px;
+      word-break: break-word;
+    }
+
+    .lang-btn {
+      cursor: pointer;
+      color: #0f0;
+      text-shadow: 0 0 5px #0f0;
+      font-size: 15px;
+      padding: 5px 12px;
+      border: 1px solid #0f0;
+      border-radius: 6px;
+      background: transparent;
+      margin-bottom: 20px;
+    }
+
+    .lang-btn:hover {
+      background: rgba(0,255,0,0.1);
+    }
+
+    @media (max-width: 600px) {
+      h1.neon-title {
+        font-size: 28px;
+      }
+      .badge {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+  <div class="wrap">
+    <h1 class="neon-title">Red Team • Bug Hunter • Security Researcher</h1>
+    <button class="lang-btn" id="toggleLang">O'zbek / English</button>
+
+    <div class="badge lang-uz">
+      <h4>Men haqimda</h4>
+      <p>CTF qatnashchisi, xavfsizlik tadqiqotchisi va Red Team a'zosi.</p>
+      <p>Men zaifliklarni topaman, ekspluatatsiya qilaman va tuzataman — "Find. Exploit. Fix."</p>
+    </div>
+
+    <div class="badge lang-en" style="display:none;">
+      <h4>About me</h4>
+      <p>CTF participant, security researcher, and Red Team member.</p>
+      <p>I find, exploit, and fix vulnerabilities — "Find. Exploit. Fix."</p>
+    </div>
+
+    <div class="badge" role="region" aria-label="contact">
+      <h4>Contact / Aloqa</h4>
+      <p>📧 <a href="mailto:sarvarbekmadiyarov@gmail.com">sarvarbekmadiyarov@gmail.com</a></p>
+      <p>🐱 <a href="https://github.com/Sarvarbek-code" target="_blank">github.com/Sarvarbek-code</a></p>
+      <p>💬 <a href="https://t.me/Mardonbekdavletov" target="_blank">@Mardonbekdavletov (Telegram)</a></p>
+      <p>📸 <a href="https://instagram.com/madiyarov_09" target="_blank">@madiyarov_09 (Instagram)</a></p>
+    </div>
+
+    <div class="badge">
+      <h4>Skills / Ko‘nikmalar</h4>
+      <p>Python • JavaScript • Flask • SQLite • Web dasturlash</p>
+    </div>
+
+    <div class="badge">
+      <h4>Projects / Loyihalar</h4>
+      <p>🤖 Bot 1Py — bot.py (Yetkazish xizmati)</p>
+      <p>💻 10-sinf o‘quv loyihalari (GitHub’da mavjud)</p>
+      <p>🔗 <a href="https://github.com/Sarvarbek-code" target="_blank">github.com/Sarvarbek-code</a></p>
+    </div>
+
+    <div class="badge">
+      <h4>Open to / Hamkorlik uchun ochiq</h4>
+      <p>Bug bounty • Red-team gigs • Security research • Web dev freelance</p>
+    </div>
+
+    <footer>© 2025 Sarvarbek Madiyarov — All rights reserved</footer>
+  </div>
+
+  <script>
+    // === Language Toggle ===
+    const btn = document.getElementById("toggleLang");
+    const uz = document.querySelector(".lang-uz");
+    const en = document.querySelector(".lang-en");
+
+    btn.addEventListener("click", () => {
+      if (uz.style.display === "none") {
+        uz.style.display = "block";
+        en.style.display = "none";
+      } else {
+        uz.style.display = "none";
+        en.style.display = "block";
+      }
+    });
+
+    // === Matrix Background Effect ===
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const chars = "01";
+    const font_size = 14;
+    const columns = canvas.width / font_size;
+    const drops = [];
+
+    for (let x = 0; x < columns; x++) drops[x] = 1;
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#0f0";
+      ctx.font = font_size + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars.charAt(Math.floor(Math.random() * chars.length));
+        ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+        if (drops[i] * font_size > canvas.height && Math.random() > 0.975)
+          drops[i] = 0;
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 33);
+    window.addEventListener('resize', () => {
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+    });
+  </script>
+</body>
+</html>
